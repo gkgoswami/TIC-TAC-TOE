@@ -1,0 +1,164 @@
+#include<stdio.h>
+#include<conio.h>
+#include<windows.h>
+COORD coord={0,0};
+void pattern();
+void gotoxy(int x,int y)
+{
+    coord.X=x;
+    coord.Y=y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coord);
+}
+void main()
+{
+    int c,d,i,f,g,h;
+    int array[9]={0,0,0,0,0,0,0,0,0};
+    pattern();
+    for(c=0;c<=8;c++)
+    {
+        if(c%2==0)
+        {
+            gotoxy(7,6);
+            printf("1st");
+            gotoxy(0,25);
+            printf("Enter your selection");
+            wrong:
+            scanf("%d",&d);
+            if(array[0]==d||array[1]==d||array[2]==d||array[3]==d||array[4]==d||array[5]==d||array[6]==d||array[7]==d||array[8]==d)
+                {
+                    printf("wrong input input again");
+                    goto wrong;
+                }
+            switch(d)
+            {
+            case 7:gotoxy(46,4);printf("X");array[c]=d;break;
+            case 8:gotoxy(50,4);printf("X");array[c]=d;break;
+            case 9:gotoxy(54,4);printf("X");array[c]=d;break;
+            case 4:gotoxy(46,7);printf("X");array[c]=d;break;
+            case 5:gotoxy(50,7);printf("X");array[c]=d;break;
+            case 6:gotoxy(54,7);printf("X");array[c]=d;break;
+            case 1:gotoxy(46,10);printf("X");array[c]=d;break;
+            case 2:gotoxy(50,10);printf("X");array[c]=d;break;
+            case 3:gotoxy(54,10);printf("X");array[c]=d;break;
+            }
+        }
+        else
+        {
+            gotoxy(7,6);
+            printf("2nd");
+            gotoxy(50,25);
+            wrong2:
+            scanf("%d",&d);
+            if(array[0]==d||array[1]==d||array[2]==d||array[3]==d||array[4]==d||array[5]==d||array[6]==d||array[7]==d||array[8]==d)
+                {
+                    printf("wrong input input again");
+                    goto wrong2;
+                }
+            if(d==0)
+                printf("wrong input");
+            switch(d)
+            {
+            case 7:gotoxy(46,4);printf("O");array[c]=d;break;
+            case 8:gotoxy(50,4);printf("O");array[c]=d;break;
+            case 9:gotoxy(54,4);printf("O");array[c]=d;break;
+            case 4:gotoxy(46,7);printf("O");array[c]=d;break;
+            case 5:gotoxy(50,7);printf("O");array[c]=d;break;
+            case 6:gotoxy(54,7);printf("O");array[c]=d;break;
+            case 1:gotoxy(46,10);printf("O");array[c]=d;break;
+            case 2:gotoxy(50,10);printf("O");array[c]=d;break;
+            case 3:gotoxy(54,10);printf("O");array[c]=d;break;
+            }
+           // printf("pikacchu");
+        }
+                for(i=0;i<=7;i++)
+                {
+                    switch(i)
+                    {
+                        case 0:f=1,g=2,h=3;break;
+                        case 1:f=4,g=5,h=6;break;
+                        case 2:f=7,g=8,h=9;break;
+                        case 3:f=7,g=4,h=1;break;
+                        case 4:f=8,g=5,h=2;break;
+                        case 5:f=9,g=6,h=3;break;
+                        case 6:f=7,g=5,h=3;break;
+                        case 7:f=9,g=5,h=1;break;
+                    }
+                    if((array[0]==f||array[2]==f||array[4]==f||array[6]==f||array[8]==f)&&
+                        (array[0]==g||array[2]==g||array[4]==g||array[6]==g||array[8]==g)&&
+                        (array[0]==h||array[2]==h||array[4]==h||array[6]==h||array[8]==h))
+                    {
+                        gotoxy(0,11);
+                        printf("1st win");
+                        d=0;
+                        break;
+                    }
+                }
+                for(i=0;i<=7;i++)
+                {
+                    switch(i)
+                    {
+                        case 0:f=1,g=2,h=3;break;
+                        case 1:f=4,g=5,h=6;break;
+                        case 2:f=7,g=8,h=9;break;
+                        case 3:f=7,g=4,h=1;break;
+                        case 4:f=8,g=5,h=2;break;
+                        case 5:f=9,g=6,h=3;break;
+                        case 6:f=7,g=5,h=3;break;
+                        case 7:f=9,g=5,h=1;break;
+                    }
+                    if((array[1]==f||array[3]==f||array[5]==f||array[7]==f)&&
+                        (array[1]==g||array[3]==g||array[5]==g||array[7]==g)&&
+                        (array[1]==h||array[3]==h||array[5]==h||array[7]==h))
+                    {
+                        gotoxy(0,11);
+                        printf("2st win");
+                        d=0;
+                        break;
+                    }
+                }
+                if(d==0)
+                    break;
+                    gotoxy(0,11);
+                    printf("match tie");
+    }
+gotoxy(56,15);
+printf("C U soon");
+}
+void pattern(){
+    int a=48,b=3;
+    printf("\t\t\t\t\t\tTIC TAC TOE\n\n\n\nuse number key to play\n\nPlayer xst turn\n\nTo EXIT:E");
+    for(;b<=11;b++)
+    {
+        gotoxy(a,b);
+        printf("|");
+    }
+    a=52;
+    b=3;
+    for(;b<=11;b++)
+    {
+        gotoxy(a,b);
+        printf("|");
+    }
+    a=45;
+    b=5;
+    for(;a<=54;a++)
+    {
+        gotoxy(a,b);
+        printf("_");
+    }
+    a=45;
+    b=9;
+    for(;a<=54;a++)
+    {
+        gotoxy(a,b);
+        printf("_");
+    }
+    gotoxy(63,5);
+    printf("Use numbers for playing as :");
+    gotoxy(63,6);
+    printf("7  8  9");
+    gotoxy(63,7);
+    printf("4  5  6");
+    gotoxy(63,8);
+    printf("1  2  3");
+}
